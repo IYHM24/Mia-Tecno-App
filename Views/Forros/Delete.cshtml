@@ -1,0 +1,55 @@
+﻿@model Mia_Tecno_Store_App.Models.Forros
+@{
+    ViewData["Title"] = "Editar forro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-5">
+    <div class="container text-center">
+        <h2><strong>Eliminar forro</strong></h2>
+    </div>
+    <form method="post" asp-action="Delete">
+            <h4>¿Estas seguro de liminar este producto?</h4>
+            <div class="alert alert-danger" asp-validation-summary="ModelOnly" role="alert" disabled>
+                A simple danger alert—check it out!
+            </div>
+            <input type="hidden" asp-for="id_forro"/>
+            <div class="form-group row">
+                <div class="col">
+                    <label asp-for="nombre" class="control-label"></label>
+                    <input type="text" asp-for="nombre" class="form-control" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="referencia" class="control-label"></label>
+                    <input type="text" asp-for="referencia" class="form-control" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="marca" class="control-label"></label>
+                    <input type="text" asp-for="marca" class="form-control" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="tipo" class="control-label"></label>
+                    <input type="text" asp-for="tipo" class="form-control" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="colores" class="control-label"></label>
+                    <input type="text" asp-for="colores" class="form-control" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="variante" class="control-label"></label>
+                    <input type="text" asp-for="variante" class="form-control" disabled/>
+                </div>
+                <div class="col">
+                    <label asp-for="variante_2" class="control-label"></label>
+                    <input type="text" asp-for="variante_2" class="form-control" disabled/>
+                </div>
+            </div>
+            <div class="container d-flex justify-content-center p-5">
+                    <input type="submit" value="confirmar" class="btn btn-danger" />
+            </div>
+    </form>
+</div>
+
+@section Scripts{
+    @{<partial name="_ValidationScriptsPartial" />}
+}

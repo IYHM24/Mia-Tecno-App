@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Mia_Tecno_Store_App.Models.Forros>
+@{
+    ViewData["Title"] = "Forros";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+       @TempData["mensaje"];
+       <button type="button" class="close" data-dismiss="alert" aria-label="close">
+           <span aria-hidden="true">&times;</span>
+       </button>
+    </div>
+}
+
+<div>
+    <div class="container text-center p-5 bg-ight">
+        <h2><strong>Registro de forros</strong></h2>
+    </div>
+    <div class="container row mb-2">
+        <div class="col-sm-6">
+            <form method="post" class="d-flex">
+                <input class="form-control mx-1" name="nombre" type="text" for="nombre" placeholder="Referencia" />
+                <button type="submit" class="btn btn-primary">buscar</button>
+            </form>
+        </div>
+        <div class="col-sm-6 d-flex flex-lg-row-reverse">
+            <a href="Create" class="btn btn-success"> + </a>    
+        </div>
+    </div>
+    <div class="container">
+            <div class="container p-3">
+                <p>@Model.Count() Resultados encontrados para @ViewBag.nombre</p>
+           </div>  
+        @if (Model.Count()>0)
+        {
+            <table class="table table-bordered table-striped">
+                <thead class="bg-primary text-light">
+                    <tr>
+                        <td><strong>@Html.DisplayNameFor(m => m.nombre)</strong></td>
+                        <td><strong>@Html.DisplayNameFor(m => m.referencia)</strong></td>
+                        <td><strong>@Html.DisplayNameFor(m => m.tipo)</strong></td>
+                        <td><strong>@Html.DisplayNameFor(m => m.colores)</strong></td>
+                        <td><strong>@Html.DisplayNameFor(m => m.marca)</strong></td>
+                        <td><strong>@Html.DisplayNameFor(m => m.variante)</strong></td>
+                        <td><strong>@Html.DisplayNameFor(m => m.variante_2)</strong></td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@item.nombre</td>
+                            <td>@item.referencia</td>
+                            <td>@item.tipo</td>
+                            <td>@item.colores</td>
+                            <td>@item.marca</td>
+                            <td>@item.variante</td>
+                            <td>@item.variante_2</td>
+                            <td>
+                                <a asp-controller="Forros" asp-action="Editar" asp-route-id="@item.id_forro" class="btn btn-warning"> Editar</a>
+                                <a asp-controller="Forros" asp-action="Delete" asp-route-id="@item.id_forro" class="btn btn-danger"> Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+           <div class="container p-3">
+           </div>  
+        }
+        else
+        {
+           <div class="container p-lg-5 text-center text-secondary border shadow">
+               <p class="p-lg-5"><strong>No existen registros</strong></p>
+           </div>    
+        }
+    </div>
+</div>
